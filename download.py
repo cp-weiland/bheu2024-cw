@@ -14,6 +14,7 @@ def get_datasetids_HF():
     # from datasets import list_datasets
     all_datasets = list_datasets()
     datasetid_list = list(all_datasets)
+    print(len(datasetid_list))
     #columns defined from HF datasets
     columns = ['id', 'author', 'sha','created_at','tzinfo','last_modified','private','gated','disabled','downloads','downloads_all_time','paperswithcode_id',
     'tags','trending_score','card_data','siblings']
@@ -84,8 +85,10 @@ def fetch_croissant_metadata(output_dir:str, log_file:str):
     setup_logging(log_file)
 
     print(len(data_id))
-    #first_20_items = data_id[:4]
-    sys.exit(0)
+    #stopme = (len(data_id) - 1)
+    #first_20_items =  data_id[:stopme]
+    first_20_items = data_id[:1]
+    #sys.exit(0)
     
     # Write each item to a separate file
     for i, data_id in enumerate(first_20_items):
@@ -120,4 +123,4 @@ def fetch_croissant_metadata(output_dir:str, log_file:str):
             print('--------------------------------------------------------------------------------------------')
             
 if __name__ == "__main__":
-    fetch_croissant_metadata("json", "err.log")
+    fetch_croissant_metadata("hugging_face02", "err.log")
